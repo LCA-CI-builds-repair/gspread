@@ -312,8 +312,10 @@ class Worksheet:
             data = self.get(
                 rowcol_to_a1(row, col), value_render_option=value_render_option
             )
-
-            value = str(data.first())
+            if type(data) == list:
+                value = str(data[0])
+            else:
+                value = str(data)
         except KeyError:
             value = ""
 
