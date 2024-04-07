@@ -313,7 +313,11 @@ class Worksheet:
                 rowcol_to_a1(row, col), value_render_option=value_render_option
             )
 
-            value = str(data.first())
+            # Check if data is a list of lists and if so, access the first element properly
+            if isinstance(data, list) and data and isinstance(data[0], list) and data[0]:
+                value = str(data[0][0])
+            else:
+                value = ""  # Set to an empty string or handle as appropriate
         except KeyError:
             value = ""
 
