@@ -524,7 +524,11 @@ class Worksheet:
                                        )
         else:
             # all expected headers must be unique
-            expected_headers_are_unique = len(expected_headers) == len(
+            expected_headers_are_unique = len(expected_headers) == len(set(expected_headers))
+            if not expected_headers_are_unique:
+                raise GSpreadException("the 'expected_headers' argument in get_all_records is not unique"
+                                       "try passing a list of unique strings"
+                                       )
                 set(expected_headers)
             )
             if not expected_headers_are_unique:
