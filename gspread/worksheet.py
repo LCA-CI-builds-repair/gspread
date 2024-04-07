@@ -307,16 +307,19 @@ class Worksheet:
         <Cell R1C1 "I'm cell A1">
 
         :rtype: :class:`gspread.cell.Cell`
-        """
-        try:
-            data = self.get(
-                rowcol_to_a1(row, col), value_render_option=value_render_option
-            )
+```python
+try:
+    data = self.get(
+        rowcol_to_a1(row, col), value_render_option=value_render_option
+    )
 
-            value = str(data.first())
-        except KeyError:
-            value = ""
-
+    if isinstance(data, list):
+        value = str(data[0])
+    else:
+        value = str(data)
+except KeyError:
+    value = ""
+```
         return Cell(row, col, value)
 
     @cast_to_a1_notation
