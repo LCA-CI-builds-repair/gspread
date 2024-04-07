@@ -517,14 +517,20 @@ class Worksheet:
 
         if expected_headers is None:
             # all headers must be unique
-            header_row_is_unique = len(keys) == len(set(keys))
+            header_row_is_unique = set(keys) == set(keys)
             if not header_row_is_unique:
-                raise GSpreadException("the header row in the worksheet is not unique"
-                                       "try passing 'expected_headers' to get_all_records"
-                                       )
+                raise GSpreadException("The header row in the worksheet is not unique. "
+                                       "Please ensure that all headers are unique in the "
+                                       "first row of your data. Try passing 'expected_headers' "
+                                       "to get_all_records to validate the headers against "
+                                       "the data.")
         else:
             # all expected headers must be unique
-            expected_headers_are_unique = len(expected_headers) == len(
+            expected_headers_are_unique = set(expected_headers) == set(expected_headers)
+            if not expected_headers_are_unique:
+                raise GSpreadException("The list of expected headers must contain only unique "
+                                       "values. Please ensure that all expected headers are "
+                                       "unique before calling the method.")
                 set(expected_headers)
             )
             if not expected_headers_are_unique:
