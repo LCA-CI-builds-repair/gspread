@@ -528,6 +528,14 @@ class Worksheet:
                 set(expected_headers)
             )
             if not expected_headers_are_unique:
+                raise GSpreadException("the expected headers in the worksheet are not unique"
+                                       "try passing 'expected_headers' to get_all_records"
+                                       )
+            else:
+                return [dict(zip(keys, row)) for row in rows[1:]]
+                set(expected_headers)
+            )
+            if not expected_headers_are_unique:
                 raise GSpreadException("the given 'expected_headers' are not uniques")
             # expected headers must be a subset of the actual headers
             if not all(header in keys for header in expected_headers):
