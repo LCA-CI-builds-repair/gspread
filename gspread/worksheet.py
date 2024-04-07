@@ -307,13 +307,7 @@ class Worksheet:
         <Cell R1C1 "I'm cell A1">
 
         :rtype: :class:`gspread.cell.Cell`
-        """
-        try:
-            data = self.get(
-                rowcol_to_a1(row, col), value_render_option=value_render_option
-            )
-
-            value = str(data.first())
+            value = str(data[0])
         except KeyError:
             value = ""
 
