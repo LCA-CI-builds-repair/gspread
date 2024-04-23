@@ -2,7 +2,22 @@
 gspread.http_client
 ~~~~~~~~~~~~~~
 
-This module contains HTTPClient class responsible for communicating with
+This module contains HT        if session is not None:
+            self.session = session
+        else:
+            self.auth: google.auth.credentials.Credentials = convert_credentials(auth)
+            self.session = AuthorizedSession(self.auth)
+
+        self.timeout: Optional[Union[float, Tuple[float, float]]] = None
+
+    def login(self) -> None:
+        from google.auth.transport.requests import Request
+        from gspread.utils import convert_credentials
+        from google.auth.transport.requests import AuthorizedSession
+
+        self.auth = convert_credentials(auth)
+        self.auth.refresh(Request())
+        self.session.headers.update({"Authorization": "Bearer %s" % self.auth.token}) responsible for communicating with
 Google API.
 
 """
