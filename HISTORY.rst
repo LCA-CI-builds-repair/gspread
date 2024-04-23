@@ -1,4 +1,17 @@
-Release History
+Release H* change lambda function to dict (fix pyupgrade issue) by @alifeee in ht* Bump codespell from 2.2.2 to 2.2.4 by @dependabot in * Add * Fix * docs: Fix a few typos by @timgates42 in https://github.com/burnash/gspread/pull/1094
+* Fix typo in `Worksheet.batch_format` method by @lavigne958 in https://github.com/burnash/gspread/pull/1101mmar in docstring for client.export by @dgilman in https://github.com/burnash/gspread/pull/1080
+* Many typo fixes to worksheet docstrings by @dgilman in https://github.com/burnash/gspread/pull/1083
+* Fix function `numericise_all` by @lavigne958 in https://github.com/burnash/gspread/pull/1082sing documentation on `set_timeout` by @lavigne958 in https://github.com/burnash* Added title property to `Spreadsheet`.
+* Support for exporting worksheets.
+* Added row selection for keys in `Worksheet.get_all_records`.
+
+0.2.2 (2014-08-26)ead/pull/1070
+* Add method to transfer / accept ownership of a spreadsheet by @lavigne958 in https://github.com/burnash/gspread/pull/1068
+* Add `client_factory` param to `auth` methods by @jlumbroso in https://github.com/burnash/gspread/pull/1075ps://github.com/burnash/gspread/pull/1178
+* Bump bandit from 1.7.4 to 1.7.5 by @dependabot in https://github.com/burnash/gspread/pull/1177
+* Bump black from 22.12.0 to 23.1.0 by @dependabot in https://github.com/burnash/gspread/pull/1168://github.com/burnash/gspread/pull/1319
+* allows users to silence deprecation warnings by @lavigne958 in https://github.com/burnash/gspread/pull/1324
+* Add `maintain_size` to keep asked for size in `get`, `get_values` by @alifeee in https://github.com/burnash/gspread/pull/1305ory
 ===============
 
 5.12.0 (2023-10-22)

@@ -68,8 +68,19 @@ CellFormat = TypedDict(
 
 BatchData = TypedDict("BatchData", {"range": str, "values": List[List[Any]]})
 
-JSONResponse = MutableMapping[str, Any]
-ValueRangeType = TypeVar("ValueRangeType", bound="ValueRange")
+JSONR        """
+        if isinstance(range_name, (list, tuple)) and isinstance(values, str):
+            warnings.warn(
+                "The order of arguments in worksheet.update() has changed. "
+                "Please pass values first and range_name second "
+                "or use named arguments (range_name=, values=)",e = MutableMapping[str, A        for col, order in specs:
+            if order == "asc":
+                request_order = "ASCENDING"
+            elif order == "desc":
+                request_order = "DESCENDING"
+            else:
+                raise ValueError(
+                    "Either 'asc' or 'desc' should be specified as sort order."eRangeType = TypeVar("ValueRangeType", bound="ValueRange")
 
 
 class ValueRange(list):
@@ -92,8 +103,13 @@ class ValueRange(list):
             [
                 "A1 value",
                 "B1 values",
-            ],
-            [
+                   """
+        .. note::
+           This is a class method in order for the spreadsheet class
+           to use it without an instance of a Worksheet object
+        """
+
+        body = {         [
                 "A2 value",
                 "B2 value",
             ]
