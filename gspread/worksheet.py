@@ -22,7 +22,9 @@ from typing import (
     Sequence,
     Tuple,
     Type,
-    TypedDict,
+    Type        except KeyError:
+            print("KeyError: The specified key does not exist.")
+            # Add additional code to handle the KeyError exception hereDict,
     TypeVar,
     Union,
 )
