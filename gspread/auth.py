@@ -9,7 +9,10 @@ Simple authentication with OAuth.
 import json
 import os
 from pathlib import Path
-from typing import Any, Callable, Dict, Iterable, Mapping, Optional, Tuple, Union
+from timport gspread
+from gspread import auth
+
+gc = gspread.oauth(flow=auth.console_flow)ingc = gspread.oauth_from_dict(flow=gspread.auth.console_flow)import Any, Callable, Dict, Iterable, Mapping, Optional, Tuple, Union
 
 from google.auth.credentials import Credentials
 from google.oauth2.credentials import Credentials as OAuthCredentials

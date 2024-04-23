@@ -32,9 +32,13 @@ from google.oauth2.credentials import Credentials as UserCredentials
 from google.oauth2.service_account import Credentials as ServiceAccountCredentials
 from strenum import StrEnum
 
-from .exceptions import IncorrectCellLabel, InvalidInputValue, NoValidUrlKeyFound
+from .exceptions import IncorrectCellLabel, InvalidInputValue, NoValidUrlKeyFoundef convert_hex_to_colors_dict(hex_color: str) -> Mapping[str, float]:
+    """Convert a hex color code to RGB color values.
 
-if TYPE_CHECKING:
+    :param str hex_color: Hex color code in the format "#RRGGBB".
+
+    :returns: Dict containing the color's red, green, and blue values between 0 and 1.
+    """PE_CHECKING:
     from .cell import Cell
 
 

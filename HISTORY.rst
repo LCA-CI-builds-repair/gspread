@@ -9,7 +9,20 @@ Release History
 5.12.2 (2023-12-04)
 -------------------
 
-* Many fixes for `get_records` by @alifeee in https://github.com/burnash/gspread/pull/1357
+** isort your imports (again),  use canonical range as specified in the API, add test cassett* Fix typos in doc and comments (#868 by @cclauss)
+
+* Auto cast numeric values from sheet cells to python int or float (#866 by @lavigne958)
+
+* Add `Worksheet.get_values()` method (#775 by @burnash)event InvalidGridRange,
+  improve code formatting (#937 by @Fendse)
+
+* fix fully qualified class names in API documentation (#944 by @geoffbeier)you don't have to (#914 by @cclaus)
+
+* lint_python.yml: Try 'tox -e py' to test current Python (#916 by @cclaus)
+
+* Add more flake8 tests (#917 by @cclaus)
+
+* Update test suite (#918 by @cclaus)xes for `get_records` by @alifeee in https://github.com/burnash/gspread/pull/1357
 * change `worksheet.update` migration guide by @alifeee in https://github.com/burnash/gspread/pull/1362
 
 5.12.1 (2023-11-29)

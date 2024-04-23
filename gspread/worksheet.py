@@ -78,7 +78,14 @@ class ValueRange(list):
     This class inherit the :const:`list` object type.
     It behaves exactly like a list.
 
-    The values are stored in a matrix.
+    The values are stored         for col, order in specs:
+            if order == "asc":
+                request_order = "ASCENDING"
+            elif order == "desc":
+                request_order = "DESCENDING"
+            else:
+                raise ValueError(
+                    "Either 'asc' or 'desc' should be specified as sort order."rix.
 
     The property :meth:`gspread.worksheet.ValueRange.major_dimension`
     holds the major dimension of the first list level.

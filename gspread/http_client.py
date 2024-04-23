@@ -10,8 +10,11 @@ from http import HTTPStatus
 from typing import IO, Any, List, Mapping, MutableMapping, Optional, Tuple, Type, Union
 
 from google.auth.credentials import Credentials
-from google.auth.transport.requests import AuthorizedSession
-from requests import Response, Session
+from google.auth.transport.requests import AuthorizedSessi            if code in self._HTTP_ERROR_CODES and not self._MAX_BACKOFF_REACHED:
+                self._NR_BACKOFF += 1
+                wait = min(2**self._NR_BACKOFF, self._MAX_BACKOFF)
+
+                if wait >= self._MAX_BACKOFF:om requests import Response, Session
 
 from .exceptions import APIError
 from .urls import (
