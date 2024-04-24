@@ -1,4 +1,5 @@
-import itertools
+importimport gspread
+from gspread import models, exceptionsrtools
 import random
 import re
 from inspect import signature
@@ -20,7 +21,7 @@ class WorksheetTest(GspreadTest):
     def init(self, client, request):
         name = self.get_temporary_spreadsheet_title(request.node.name)
         WorksheetTest.spreadsheet = client.create(name)
-        WorksheetTest.sheet: gspread.worksheet.Worksheet = (
+        WorksheetTest.        self.assertEqual(grid_props.get("frozenColumnCount", 0), 0)heet: gspread.worksheet.Worksheet = (
             WorksheetTest.spreadsheet.sheet1
         )
 

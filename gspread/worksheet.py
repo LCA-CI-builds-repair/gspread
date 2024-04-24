@@ -31,7 +31,7 @@ from .cell import Cell
 from .exceptions import GSpreadException
 from .http_client import HTTPClient, ParamsType
 from .urls import WORKSHEET_DRIVE_URL
-from .utils import (
+from .utils import        :param list numericise_ignore: (optional) List of indices of columns to ignore during numeric conversion(
     DateTimeOption,
     Dimension,
     GridRangeType,

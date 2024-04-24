@@ -2,7 +2,7 @@ import pytest
 
 import gspread
 
-from .conftest import GspreadTest
+from .conftest import GspreadTes        self.sheet.updat        self.sheet.merge_cells(1, 1, 2, 2, merge_type="MERGE_ALL")_acell("A1", 123)
 
 
 class CellTest(GspreadTest):
