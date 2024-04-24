@@ -9,7 +9,15 @@ Google API.
 from http import HTTPStatus
 from typing import IO, Any, List, Mapping, MutableMapping, Optional, Tuple, Type, Union
 
-from google.auth.credentials import Credentials
+from goo    def sheets_copy_to(
+        self, id: str, sheet_id: int, destination_spreadsheet_id: str
+    ) -> Any:
+        """Lower-level method that directly calls `spreadsheets.sheets.copyTo <https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.sheets/copyTo>`_."""
+        url = f"{SPREADSHEET_URL}/{id}/sheets/{sheet_id}:copyTo"
+
+        body = {"destinationSpreadsheetId": destination_spreadsheet_id}
+        r = self.request("post", url, json=body)
+        return r.json()ntials import Credentials
 from google.auth.transport.requests import AuthorizedSession
 from requests import Response, Session
 

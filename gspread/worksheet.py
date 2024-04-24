@@ -6,9 +6,43 @@ This module contains common worksheets' models.
 
 """
 
-import re
-import warnings
-from typing import (
+import     class ValueRangeType:
+        """Represents a value range in a worksheet.
+
+        .. note::
+
+           This class should never be instantiated manually.
+           It will be instantiated using the response from the sheet API.
+        """
+
+        _data: MutableMapping[str, Any] = {}
+
+        @classmethod
+        def from_json(cls: Type[ValueRangeType], json: Mapping[str, Any]) -> ValueRangeType:
+            values = json.get("values", [])
+            new_obj = cls(values)
+            new_obj._data = {
+                "range": json["range"],
+                "majorDimension": json["majorDimension"],
+            }
+
+            return new_obj
+
+        @property
+        def range(self) -> str:
+            """The range of the values"""
+            return self._data["range"]
+
+        @property
+        def major_dimension(self) -> str:
+            """The major dimension of this range
+
+            Can be one of:
+
+            * ``ROW``: the first list level holds rows of values
+            * ``COLUMNS``: the first list level holds columns of values
+            """
+            return self._data["majorDimension"]t (
     Any,
     Callable,
     Dict,

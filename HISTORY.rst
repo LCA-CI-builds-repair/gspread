@@ -4,7 +4,12 @@ Release History
 5.12.0 (2023-10-22)
 -------------------
 
-* feature -- adding `worksheet.get_records` to get specific row ranges by @AndrewBasem1 in https://github.com/burnash/gspread/pull/1301
+* feature -- adding `worksheet.get_records` to get specific row ranges by @AndrewBasem1 in https://5.3.2 (2022-04-12)
+------------------
+* Bugfix/black python3.10 by @lavigne958 in https://github.com/burnash/gspread/pull/1020
+* Automate releases by @lavigne958 in https://github.com/burnash/gspread/pull/1025
+* Bugfix/get all record duplicated columns by @lavigne958 in https://github.com/burnash/gspread/pull/1021
+* @newcontributor made their first contribution in https://github.com/burnash/gspread/pull/NEW_PULL_REQUEST_NUMBERburnash/gspread/pull/1301
 * Fix list_spreadsheet_files return value by @mephinet in https://github.com/burnash/gspread/pull/1308
 * Fix warning message for `worksheet.update` method by @ksj20 in https://github.com/burnash/gspread/pull/1312
 * change lambda function to dict (fix pyupgrade issue) by @alifeee in https://github.com/burnash/gspread/pull/1319
