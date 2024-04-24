@@ -2,9 +2,71 @@ Release History
 ===============
 
 5.12.3 (2023-12-15)
--------------------
+---------------* Add deprecation warning for future release 6.0.x by @lavigne958 in https://github.com/burnash/gspread/pull/1195
+* FEATURE: show/hide gridlines (#1197) by @alifeee in https://github.com/burna4.0.1 (2021-08-07)
+------------------
 
-* 1363 get all records retrieves a large number of empty rows after the end of the data by @alifeee in https://github.com/burnash/gspread/pull/1364
+* Do not overwrite original value when trying to convert to a number (#902 by @lavigne958)
+
+
+4.0.0 (2021-08-01)
+------------------
+
+* Changed `Worksheet.find()` method returns `None` if nothing is found (#899 by @GastonBC)
+* Add `Worksheet.batch_clear()` to clear multiple ranges. (#897 by @lavigne958)
+* Fix `copy_permission` argument comparison in `Client.copy()` method (#898 by @lavigne958)
+* Allow creation of spreadsheets in a shared drive (#895 by @lavigne958)
+* Allow `gspread.oauth()` to accept a custom credential file (#891 by @slmtpz)
+* Update `tox.ini`, remove python2 from env list (#887 by @cclaus)
+* Add `SpreadSheet.get_worksheet_by_id()` method (#857 by @a-crovetto)
+* Fix `store_credentials()` when `authorized_user_filename` is passed (#884 by @neuenmuller)
+* Remove python2 (#879 by @lavigne958)
+* Use `Makefile` to run tests (#883 by @lavigne958)
+* Update documentation `Authentication:For End Users` using OAuth Client ID (#835 by @ManuNaEira)
+* Allow fetching named ranges from `Worksheet.range()` (#809 by @agatti)
+* Update README to only mention python3.3+ (#877 by @lavigne958)
+* Fetch `creation` and `lastUpdate` time from `SpreadSheet` on open (#872 by @lavigne958)
+* Fix bug with `Worksheet.insert_row()` with `value_input_option` argument (#873 by @elijabesu)
+
+
+* parent 39d1ecb59ca3149a8f46094c720efab883a0dc11 author Christian Clauss <cclauss@me.com> 1621149013 +0200 commit
+ter Christian Clauss <cclauss@me.com> 1630103641 +0200 (#869 by @cclaus)
+
+* Enable code linter in CI (#915 by @lavigne958)
+* isort your imports (again), so you don't have to (#914 by @cclaus)
+* lint_python.yml: Try 'tox -e py' to test current Python (#916 by @cclaus)
+* Add more flake8 tests (#917 by @cclaus)
+* Update test suite (#918 by @cclaus)
+* Avoid IndexError when row_values() returns an empty row (#920 by @cclaus)
+* Bugfix - remove wrong argument in `batch_update` docstring (#912 by @lavigne958)
+* Improvement - Add `Worksheet.index` property (#922 by @lavigne958)
+* Add ability to create directory if it does not exist before saving the credentials to disk. (#925 by @benhoman)
+* Update test framework and VCR and cassettes (#926 by @lavigne958)
+* Delete .travis.yml (#928 by @cclaus)
+* Update tox.ini with all linting commands under lint env (by @lavigne958)
+* Build package and docs in CI (#930 by @lavigne958)
+* Update oauth2.rst (#933 by @amlestin)
+* Update the link to the Google Developers Console (#934 by @Croebh)
+* allow tests to run on windows, add and improve tests in WorksheetTests, add test on unbounded range,
+  use canonical range as specified in the API, add test cassettes, prevent InvalidGridRange,
+  improve code formatting (#937 by @Fendse)
+* fix fully qualified class names in API documentation (#944 by @geoffbeier)
+* fix editor_users_emails - get only from list not all users added to spreadsheet (#939 by @Lukasz)
+* add shadow method to get a named range from a speadsheet instance (#941 by @lavigne958)
+* auto_resize_columns (#948 by @FelipeSantos75)
+* add functions for defining, deleting and listing named ranges (#945 by @p-doyle)
+* Implement `open` sheet within Drive folder (#951 by @datavaluepeople)
+* Fix get range for unbounded ranges (#954 by @lavigne958)
+* remove potential I/O when reading spreadsheet title (956 by @lavigne958)
+* Add include_values_in_response to append_row & append_rows (#957 by @martimarkov)
+* replace raw string "ROWS" & "COLUMNS" to Dimension named tuple,
+  replace raw string "FORMATTED_VALUE", "UNFORMATTED_VALUE", "FORMULA" to ValueRenderOption named tuple,
+  replace raw string "RAW", "USER_ENTERED" to ValueInputOption named tuple (#958 by @ccppoo)/burnash/gspread/pull/1200
+* Refactor/update-contributing-guide by @alifeee in https://github.com/burnash/gspread/pull/1206
+* Spelling fix (with legacy option) by @alifeee in https://github.com/burnash/gspread/pull/1210
+* 457-fetch-without-hidden-worksheets by @alifeee in https://github.com/burnash/gspread/pull/1207
+* Add_deprecated_warning_sort_method by @lavigne958 in https://github.com/burnash/gspread/pull/1198
+* Update (and test for) internal properties on change by @alifeee in https://github.com/burnash/gspread/pull/12111363 get all records retrieves a large number of empty rows after the end of the data by @alifeee in https://github.com/burnash/gspread/pull/1364
 
 5.12.2 (2023-12-04)
 -------------------

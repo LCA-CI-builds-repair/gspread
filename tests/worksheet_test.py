@@ -21,10 +21,38 @@ class WorksheetTest(GspreadTest):
         name = self.get_temporary_spreadsheet_title(request.node.name)
         WorksheetTest.spreadsheet = client.create(name)
         WorksheetTest.sheet: gspread.worksheet.Worksheet = (
-            WorksheetTest.spreadsheet.sheet1
-        )
+            WorksheetTest.spreadsimport pytest  # Add missing import statement for pytest
 
-        yield
+class TestWorksheet:
+    def test_sort(self):
+        rows = [
+            (1, "abc", 10),
+            (2, "def", 5),
+            (3, "des", 8),
+        ]
+        self.sheet._properties["gridProperties"]["frozenRowCount"] = 1
+        self.sheet.sort(*specs)
+        rows = [rows[0]] + sorted(rows[1:], key=lambda x: int(x[2]), reverse=True)
+        self.assertEqual(self.sheet.get_all_values(), rows)
+
+    @pytest.mark.vcr()
+    def test_freeze(self):
+        freeze_cols = 1
+        freeze_rows = 2
+
+        def get_grid_props():
+            sheets = self.spreadsheet.fetch_sheet_metadata()["sheets"]
+            return utils.finditem(
+                lambda x: x["properties"]["sheetId"] == self.sheet.id, sheets
+            )["properties"]["gridProperties"]
+
+        self.sheet.freeze(freeze_rows)
+
+        grid_props = get_grid_props()
+        self.assertEqual(grid_props["frozenRowCount"], freeze_rows)
+        self.assertEqual(self.sheet.frozen_row_count, freeze_rows)
+
+        self.sheet.freeze(cols=freeze_cols)      yield
 
         client.del_spreadsheet(WorksheetTest.spreadsheet.id)
 

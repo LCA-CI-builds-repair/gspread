@@ -1,7 +1,50 @@
 Examples of gspread Usage
 =========================
 
-If you haven't yet authorized your app, read :doc:`oauth2` first.
+If you haven't y   worksheet = sh.get_worksheet(0)
+
+   Or by title:
+
+   .. code:: python
+
+      worksheet = sh.worksheet("January")
+
+   Or the most common case: *Sheet1*:
+
+   .. code:: python
+
+      worksheet = sh.sheet1
+
+   To get a list of all worksheets:
+
+   .. code:: python
+
+      worksheet_list = sh.worksheets()
+
+
+   Creating a Worksheet
+   ~~~~~~~~~~~~~~~~~~~~
+
+   .. code:: python
+
+      worksheet = sh.add_worksheet(title="A worksheet", rows=100, cols=20)
+
+
+   Deleting a Worksheet
+   ~~~~~~~~~~~~~~~~~~~~
+
+   .. code:: python
+
+      sh.del_worksheet(worksheet)
+
+
+   Updating a Worksheet's name and color
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   .. code:: python
+
+      worksheet.update_title("December Transactions")
+      worksheet.update_tab_color({"red": 1, "green": 0.5, "blue": 0.5})t.
 
 
 Opening a Spreadsheet

@@ -10,8 +10,33 @@ from http import HTTPStatus
 from typing import IO, Any, List, Mapping, MutableMapping, Optional, Tuple, Type, Union
 
 from google.auth.credentials import Credentials
-from google.auth.transport.requests import AuthorizedSession
-from requests import Response, Session
+from google.auth.transport.requests importfrom http import HTTPStatus
+
+class HTTPClient:
+    _HTTP_ERROR_CODES = [
+        HTTPStatus.FORBIDDEN,  # Drive API return a 403 Forbidden on usage rate limit exceeded
+        HTTPStatus.REQUEST_TIMEOUT,  # in case of a timeout
+        HTTPStatus.TOO_MANY_REQUESTS,  # sheet API usage rate limit exceeded
+    ]
+    _NR_BACKOFF: int = 0
+    _MAX_BACKOFF: int = 128  # arbitrary maximum backoff
+    _MAX_BACKOFF_REACHED: bool = False  # Stop after reaching _MAX_BACKOFF
+
+    def request(self, *args: Any, **kwargs: Any) -> Response:
+        try:
+            return super().request(*args, **kwargs)
+        except APIError as err:
+            data = err.response.json()
+            code = data["error"]["code"]
+
+            # check if error should retry
+            if code in self._HTTP_ERROR_CODES and self._MAX_BACKOFF_REACHED is False:
+                self._NR_BACKOFF += 1
+                wait = min(2**self._NR_BACKOFF, self._MAX_BACKOFF)
+
+                if wait >= self._MAX_BACKOFF:
+                    self._MAX_BACKOFF_REACHED = True
+            return  # Added missing return statementm requests import Response, Session
 
 from .exceptions import APIError
 from .urls import (

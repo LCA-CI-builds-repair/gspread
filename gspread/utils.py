@@ -27,7 +27,47 @@ from typing import (
 )
 from urllib.parse import quote as uquote
 
-from google.auth.credentials import Credentials as Credentials
+from google.auth.credentials imdef filter_grid_range(grid_range: Dict[str, Any], sheet_id: Optional[str] = None) -> Dict[str, Any]:
+    filtered_grid_range: Dict[str, Any] = {}
+
+    for key, value in grid_range.items():
+        if isinstance(key, str):
+            filtered_grid_range[key] = value
+
+    if sheet_id is not None:
+        filtered_grid_range["sheetId"] = sheet_id
+
+    retdef convert_colors_to_hex_value(red: float, green: float, blue: float) -> str:
+    """
+    Convert RGB color values to a hexadecimal color representation.
+
+    :param red: The red color value (0-1).
+    :param green: The green color value (0-1).
+    :param blue: The blue color value (0-1).
+    :rtype: str
+    :raises:
+        ValueError: If any color value is out of the accepted range (0-1).
+
+    Example:
+
+        >>> convert_colors_to_hex_value(0.2, 0, 0.8)
+        '#3300CC'
+
+        >>> convert_colors_to_hex_value(green=0.5)
+        '#008000'
+    """
+    
+    def to_hex(value: float) -> str:
+        """
+        Convert a float to a 2-digit uppercase hex string.
+        """
+        hex_value = hex(round(value * 255))[2:]
+        return hex_value.upper().zfill(2)
+
+    if any(value < 0 or value > 1 for value in (red, green, blue)):
+        raise ValueError("Color value out of accepted range 0-1.")
+
+    return f"#{to_hex(red)}{to_hex(green)}{to_hex(blue)}"entials as Credentials
 from google.oauth2.credentials import Credentials as UserCredentials
 from google.oauth2.service_account import Credentials as ServiceAccountCredentials
 from strenum import StrEnum
