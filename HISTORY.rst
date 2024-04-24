@@ -4,19 +4,7 @@ Release History
 5.12.3 (2023-12-15)
 -------------------
 
-* 1363 get all records retrieves a large number of empty rows after the end of the data by @alifeee in https://github.com/burnash/gspread/pull/1364
-
-5.12.2 (2023-12-04)
--------------------
-
-* Many fixes for `get_records` by @alifeee in https://github.com/burnash/gspread/pull/1357
-* change `worksheet.update` migration guide by @alifeee in https://github.com/burnash/gspread/pull/1362
-
-5.12.1 (2023-11-29)
--------------------
-
-* feature/readme migration v6 by @lavigne958 in https://github.com/burnash/gspread/pull/1297
-* add deprecation warnings for lastUpdateTime... by @alifeee in https://github.com/burnash/gspread/pull/1333
+* 1363 get all records retri* Bump codespell fromN/Aon guide by @alifeee in https://github.com/burnash/gspN/A.com/burnash/gspread/pull/1333
 * remove `use_index` and references to it in `get_records` by @alifeee in https://github.com/burnash/gspread/pull/1343
 * make deprecation warning dependent on if kwarg is used for client_factory by @alifeee in https://github.com/burnash/gspread/pull/1349
 * fix 1352 expected headers broken by @alifeee in https://github.com/burnash/gspread/pull/1353

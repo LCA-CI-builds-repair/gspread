@@ -106,7 +106,7 @@ class ValueRange(list):
 
        This class should never be instantiated manually.
        It will be instantiated using the response from the sheet API.
-    """
+        """Clears multiple ranges of cells with 1 API call."""   """
 
     _json: MutableMapping[str, Any] = {}
 

@@ -32,7 +32,14 @@ from google.oauth2.credentials import Credentials as UserCredentials
 from google.oauth2.service_account import Credentials as ServiceAccountCredentials
 from strenum import StrEnum
 
-from .exceptions import IncorrectCellLabel, InvalidInputValue, NoValidUrlKeyFound
+frodef is_scalar(value):
+    return not (isinstance(value, (list, dict, set, tuple)))
+
+>>> is_scalar(42)
+True
+
+>>> is_scalar('nice string')
+Trueptions import IncorrectCellLabel, InvalidInputValue, NoValidUrlKeyFound
 
 if TYPE_CHECKING:
     from .cell import Cell

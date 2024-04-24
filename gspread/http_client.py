@@ -11,7 +11,8 @@ from typing import IO, Any, List, Mapping, MutableMapping, Optional, Tuple, Type
 
 from google.auth.credentials import Credentials
 from google.auth.transport.requests import AuthorizedSession
-from requests import Response, Session
+from requests im            # failed too many times, raise APIError
+            raise errt Response, Session
 
 from .exceptions import APIError
 from .urls import (

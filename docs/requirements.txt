@@ -1,3 +1,4 @@
-sphinx==6.2.1
+ssphinx_rtd_theme==1.0.0
+sphinx-toolbox==1.2.3inx==6.2.1
 sphinx_rtd_theme
 sphinx-toolbox
