@@ -424,13 +424,14 @@ class Spreadsheet:
         .. versionadded:: 3.4
         """
         idx_map = {}
-        for idx, w in enumerate(worksheets_in_desired_order):
-            idx_map[w.id] = idx
-        for w in self.worksheets():
-            if w.id in idx_map:
-                continue
-            idx += 1
-            idx_map[w.id] = idx
+        if worksheets_in_desired_order:
+            for idx, w in enumerate(worksheets_in_desired_order):
+                idx_map[w.id] = idx
+            for w in self.worksheets():
+                if w.id in idx_map:
+                    continue
+                idx += 1
+                idx_map[w.id] = idx
 
         body = {
             "requests": [

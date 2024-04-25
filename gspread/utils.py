@@ -755,8 +755,6 @@ def combined_merge_values(worksheet_metadata, values, start_row_index, start_col
                 new_values[row_index][col_index] = top_left_value
 
     return new_values
-
-
 def convert_hex_to_colors_dict(hex_color: str) -> Mapping[str, float]:
     """Convert a hex color code to RGB color values.
 
@@ -767,8 +765,16 @@ def convert_hex_to_colors_dict(hex_color: str) -> Mapping[str, float]:
 
     :raises:
         ValueError: If the input hex string is not in the correct format or length.
+    """
 
-    Examples:
+    if not hex_color.startswith("#") or len(hex_color) != 7:
+        raise ValueError("Hex color must be in the format '#RRGGBB'.")
+
+    red = int(hex_color[1:3], 16) / 255
+    green = int(hex_color[3:5], 16) / 255
+    blue = int(hex_color[5:7], 16) / 255
+
+    return {"red": red, "green": green, "blue": blue}
         >>> convert_hex_to_colors_dict("#3300CC")
         {'red': 0.2, 'green': 0.0, 'blue': 0.8}
 

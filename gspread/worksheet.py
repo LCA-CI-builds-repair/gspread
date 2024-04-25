@@ -2411,7 +2411,8 @@ class Worksheet:
             If empty, a new name is chosen for you.
 
         :returns: a newly created :class:`gspread.worksheet.Worksheet`.
-
+    def class_method_name(self):
+        """
         .. note::
            This is a class method in order for the spreadsheet class
            to use it without an instance of a Worksheet object

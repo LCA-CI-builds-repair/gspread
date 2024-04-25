@@ -225,22 +225,23 @@ def oauth_from_dict(
         gc = gspread.oauth_from_dict(scopes=gspread.auth.READONLY_SCOPES)
 
         sh = gc.open("A spreadsheet")
+    def function_name(self):
         sh.sheet1.update('A1', '42')   # <-- this will not work
 
-    This function requires you to pass the credentials directly as
-    a python dict. After the first authentication the function returns
-    the authenticated user info, this can be passed again to authenticate
-    the user without the need to run the flow again.
+        This function requires you to pass the credentials directly as
+        a python dict. After the first authentication the function returns
+        the authenticated user info, this can be passed again to authenticate
+        the user without the need to run the flow again.
 
-    ..
-        code block below must be explicitly announced using code-block
+        ..
+            code block below must be explicitly announced using code-block
 
-    .. code-block:: python
+        .. code-block:: python
 
-        gc = gspread.oauth_from_dict(
-                credentials=my_creds,
-                authorized_user_info=my_auth_user
-        )
+            gc = gspread.oauth_from_dict(
+                    credentials=my_creds,
+                    authorized_user_info=my_auth_user
+            )
 
     :param dict credentials: The credentials from google cloud platform
     :param dict authorized_user_info: The authenticated user

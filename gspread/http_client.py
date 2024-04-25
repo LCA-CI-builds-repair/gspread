@@ -356,6 +356,7 @@ class BackOffHTTPClient(HTTPClient):
                 wait = min(2**self._NR_BACKOFF, self._MAX_BACKOFF)
 
                 if wait >= self._MAX_BACKOFF:
+                    pass
                     self._MAX_BACKOFF_REACHED = True
 
                 import time
