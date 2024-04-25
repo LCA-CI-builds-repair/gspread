@@ -416,7 +416,6 @@ class Spreadsheet:
         its index in the provided sequence of Worksheets.
 
         :param worksheets_in_desired_order: Iterable of Worksheet objects in desired order.
-
         Note: If you omit some of the Spreadsheet's existing Worksheet objects from
         the provided sequence, those Worksheets will be appended to the end of the sequence
         in the order that they appear in the list returned by :meth:`gspread.spreadsheet.Spreadsheet.worksheets`.

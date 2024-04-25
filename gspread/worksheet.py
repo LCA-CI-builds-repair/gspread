@@ -1225,11 +1225,11 @@ class Worksheet:
 
         .. versionadded:: 3.3
         """
-        if isinstance(range_name, (list, tuple)) and isinstance(values, str):
+        if isinstance(range_name, (str, int)) and isinstance(values, (list, tuple)):
             warnings.warn(
                 "The order of arguments in worksheet.update() has changed. "
-                "Please pass values first and range_name second"
-                "or used named arguments (range_name=, values=)",
+                "Please pass values first and range_name second "
+                "or use named arguments (range_name=, values=)",
                 DeprecationWarning,
             )
             range_name, values = values, range_name
@@ -2474,7 +2474,6 @@ class Worksheet:
             If empty, a new name is chosen for you.
 
         :returns: a newly created :class:`gspread.worksheet.Worksheet`.
-
         .. note::
            This is a class method in order for the spreadsheet class
            to use it without an instance of a Worksheet object
