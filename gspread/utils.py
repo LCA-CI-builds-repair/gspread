@@ -531,12 +531,12 @@ def cast_to_a1_notation(method: Callable[..., Any]) -> Callable[..., Any]:
                 range_end = rowcol_to_a1(*args[-2:])
                 range_name = ":".join((range_start, range_end))
 
-                args = (range_name,) + args[4:]
-        except ValueError:
+                args = (range_name,) + args[2:]
+        except ValueError as e:
+            # Add specific error handling for the ValueError
             pass
 
         return method(self, *args, **kwargs)
-
     return wrapper
 
 

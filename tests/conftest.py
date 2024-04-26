@@ -64,8 +64,15 @@ def vcr_config():
 
 
 class DummyCredentials(UserCredentials):
+import unittest
+
+def get_method_name(method_id):
+    # Implementation of get_method_name function
     pass
 
+def prefixed_counter(value):
+    # Implementation of prefixed_counter function
+    pass
 
 class GspreadTest(unittest.TestCase):
     @classmethod
