@@ -28,6 +28,7 @@ from typing import (
 )
 
 from .cell import Cell
+from oauth2client.service_account import ServiceAccountCredentials
 from .exceptions import GSpreadException
 from .http_client import HTTPClient, ParamsType
 from .urls import WORKSHEET_DRIVE_URL
@@ -631,9 +632,8 @@ class Worksheet:
             values = fill_gaps(values, cols=keys_len, padding_value=default_blank)
 
         if numericise_ignore == ["all"]:
-            pass
         else:
-            values = [
+            values: List[List[Union[str, int, float]]] = [
                 numericise_all(
                     row,
                     empty2zero,
@@ -644,7 +644,7 @@ class Worksheet:
                 for row in values
             ]
 
-        formatted_records = [dict(zip(keys, row)) for row in values]
+        formatted_records: List[Dict[str, Union[str, int, float]]] = [dict(zip(keys, row)) for row in values]
 
         return formatted_records
 
@@ -3139,7 +3139,7 @@ class Worksheet:
             Can be the A1 notation of the top left corner where the range must be paste
             ex: G16, or a complete range notation ex: G16:I20.
             The dimensions of the destination range is not checked and has no effect,
-            if the destination range does not match the source range dimension, the entire
+            if the destination range does not match the source range dimension, the entire)
             source range is copies anyway.
         :param paste_type: the paste type to apply. Many paste type are available from
             the Sheet API, see above note for detailed values for all values and their effects.

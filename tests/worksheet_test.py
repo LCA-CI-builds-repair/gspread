@@ -13,9 +13,9 @@ from .conftest import I18N_STR, GspreadTest
 
 
 class WorksheetTest(GspreadTest):
+import unittest
 
     """Test for gspread.Worksheet."""
-
     @pytest.fixture(scope="function", autouse=True)
     def init(self, client, request):
         name = self.get_temporary_spreadsheet_title(request.node.name)

@@ -55,16 +55,11 @@ class HTTPClient:
         created by `google-auth <https://github.com/googleapis/google-auth-library-python>`_.
 
         You can pass you own Session object, simply pass ``auth=None`` and ``session=my_custom_session``.
-
-    This class is not intended to be created manually.
-    It will be created by the gspread.Client class.
-    """
-
-    def __init__(self, auth: Credentials, session: Optional[Session] = None) -> None:
+    def __init__(self, auth: Union[Credentials, ServiceAccountCredentials], session: Optional[Session] = None) -> None:
         if session is not None:
             self.session = session
         else:
-            self.auth: Credentials = convert_credentials(auth)
+            self.auth: Union[Credentials, ServiceAccountCredentials] = convert_credentials(auth)
             self.session = AuthorizedSession(self.auth)
 
         self.timeout: Optional[Union[float, Tuple[float, float]]] = None

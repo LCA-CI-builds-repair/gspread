@@ -25,6 +25,7 @@ from typing import (
     TypeVar,
     Union,
 )
+from oauth2client.service_account import ServiceAccountCredentials
 from urllib.parse import quote as uquote
 
 from google.auth.credentials import Credentials as Credentials

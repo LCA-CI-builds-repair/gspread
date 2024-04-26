@@ -20,6 +20,7 @@ class GSpreadException(Exception):
 
 
 class WorksheetNotFound(GSpreadException):
+    """Raised when a worksheet is not found."""
     """Trying to open non-existent or inaccessible worksheet."""
 
 

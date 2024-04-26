@@ -2372,10 +2372,10 @@
                         "0"
                     ],
                     "Server": [
-                        "ESF"
+                        "Apache"
                     ],
                     "Vary": [
-                        "Origin, X-Origin"
+                        "Accept-Encoding, Authorization"
                     ]
                 },
                 "body": {
