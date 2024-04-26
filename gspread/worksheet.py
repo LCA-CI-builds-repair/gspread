@@ -537,8 +537,7 @@ class Worksheet:
                 )
 
         if numericise_ignore == ["all"]:
-            pass
-        else:
+        if condition:
             values = [
                 numericise_all(
                     row,
@@ -550,6 +549,7 @@ class Worksheet:
                 for row in values
             ]
 
+        # Convert the formatted records into a list of dictionaries
         formatted_records = [dict(zip(keys, row)) for row in values]
 
         return formatted_records
@@ -1492,10 +1492,13 @@ class Worksheet:
         .. versionadded:: 3.4
         """
         if range:
+            # Split the range into start and end A1 notation
             start_a1, end_a1 = range.split(":")
+            # Convert start and end A1 notation to row and column indices
             start_row, start_col = a1_to_rowcol(start_a1)
             end_row, end_col = a1_to_rowcol(end_a1)
         else:
+            # Set default values for start and end row and column
             start_row = self._properties["gridProperties"].get("frozenRowCount", 0) + 1
             start_col = 1
             end_row = self.row_count
@@ -2493,9 +2496,6 @@ class Worksheet:
             See `MergeType`_ in the Sheets API reference.
 
         Alternatively, you may specify numeric boundaries. All values
-        index from 1 (one):
-
-        :param int first_row: First row number
         :param int first_col: First column number
         :param int last_row: Last row number
         :param int last_col: Last column number
@@ -2504,6 +2504,9 @@ class Worksheet:
         :rtype: dict
 
         .. _MergeType: https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets/request#MergeType
+
+        """
+        grid_range = a1_range_to_grid_range(name, self.id)
 
         """
         grid_range = a1_range_to_grid_range(name, self.id)

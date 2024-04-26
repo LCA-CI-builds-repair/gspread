@@ -58,7 +58,6 @@ class HTTPClient:
 
     This class is not intended to be created manually.
     It will be created by the gspread.Client class.
-    """
 
     def __init__(self, auth: Credentials, session: Optional[Session] = None) -> None:
         if session is not None:
@@ -318,6 +317,7 @@ class BackOffHTTPClient(HTTPClient):
     prevent the application from failing (by raising an APIError exception).
 
     .. Warning::
+    .. Warning::
         This Client is not production ready yet.
         Use it at your own risk !
 
@@ -327,7 +327,6 @@ class BackOffHTTPClient(HTTPClient):
         method used.
 
     .. note::
-        Currently known issues are:
 
         * will retry exponentially even when the error should
           raise instantly. Due to the Drive API that raises
@@ -344,16 +343,16 @@ class BackOffHTTPClient(HTTPClient):
     _MAX_BACKOFF_REACHED: bool = False  # Stop after reaching _MAX_BACKOFF
 
     def request(self, *args: Any, **kwargs: Any) -> Response:
+    def request(self, *args: Any, **kwargs: Any) -> Response:
         try:
             return super().request(*args, **kwargs)
         except APIError as err:
             data = err.response.json()
             code = data["error"]["code"]
 
-            # check if error should retry
+            # Check if error should be retried
             if code in self._HTTP_ERROR_CODES and self._MAX_BACKOFF_REACHED is False:
                 self._NR_BACKOFF += 1
-                wait = min(2**self._NR_BACKOFF, self._MAX_BACKOFF)
 
                 if wait >= self._MAX_BACKOFF:
                     self._MAX_BACKOFF_REACHED = True
@@ -370,9 +369,8 @@ class BackOffHTTPClient(HTTPClient):
                 self._MAX_BACKOFF_REACHED = False
 
                 return response
+                return response
 
-            # failed too many times, raise APIEerror
+            # Failed too many times, raise APIError
             raise err
-
-
 HTTPClientType = Type[HTTPClient]

@@ -274,7 +274,6 @@ def numericise_all(
 
     return numericised_list
 
-
 def rowcol_to_a1(row: int, col: int) -> str:
     """Translates a row and column cell address to A1 notation.
 
@@ -480,17 +479,18 @@ def column_letter_to_index(column: str) -> int:
     This function is case-insensitive.
 
     Raises :exc:`gspread.exceptions.InvalidInputValue` in case of invalid input.
+    Raises :exc:`gspread.exceptions.InvalidInputValue` in case of invalid input.
 
     Examples::
 
         >>> column_letter_to_index("a")
         1
 
-    >>> column_letter_to_index("A")
-    1
+        >>> column_letter_to_index("A")
+        1
 
-    >>> column_letter_to_index("AZ")
-    52
+        >>> column_letter_to_index("AZ")
+        # Expected output: 52
 
     >>> column_letter_to_index("!@#$%^&")
     ...

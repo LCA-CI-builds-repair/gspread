@@ -2367,14 +2367,35 @@
                     ],
                     "Expires": [
                         "Mon, 01 Jan 1990 00:00:00 GMT"
+{
+    "http_interactions": [
+        {
+            "request": {
+                "method": "post",
+                "uri": "https://sheets.googleapis.com/v4/spreadsheets/spreadsheet_id/values/Sheet1!A1?key=key",
+                "body": {
+                    "string": "{'range': 'Sheet1!A1', 'majorDimension': 'ROWS', 'values': [['New Value']]}"
+                }
+            },
+            "response": {
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "date": [
+                        "Sun, 26 Sep 2021 12:00:00 GMT"
                     ],
-                    "Content-Length": [
+                    "content-type": [
+                        "application/json; charset=UTF-8"
+                    ],
+                    "content-length": [
                         "0"
                     ],
-                    "Server": [
+                    "server": [
                         "ESF"
                     ],
-                    "Vary": [
+                    "vary": [
                         "Origin, X-Origin"
                     ]
                 },

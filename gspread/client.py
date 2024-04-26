@@ -487,14 +487,16 @@ class Client:
         }
 
         if perm_type == "domain":
-            payload["domain"] = value
+        payload["domain"] = value
         elif perm_type in {"user", "group"}:
+            # Set email address and notification parameters
             payload["emailAddress"] = value
             params["sendNotificationEmail"] = notify
             params["emailMessage"] = email_message
         elif perm_type == "anyone":
             pass
         else:
+            # Raise an error for invalid permission type
             raise ValueError("Invalid permission type: {}".format(perm_type))
 
         return self.http_client.request("post", url, json=payload, params=params)

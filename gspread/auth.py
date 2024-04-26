@@ -232,9 +232,6 @@ def oauth_from_dict(
     the authenticated user info, this can be passed again to authenticate
     the user without the need to run the flow again.
 
-    ..
-        code block below must be explicitly announced using code-block
-
     .. code-block:: python
 
         gc = gspread.oauth_from_dict(
