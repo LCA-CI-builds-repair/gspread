@@ -78,20 +78,8 @@ release = version
 exclude_patterns = ["_build"]
 
 # The reST default role (used for this markup: `text`) to use for all documents.
-# default_role = None
-
-# If true, '()' will be appended to :func: etc. cross-reference text.
-# add_function_parentheses = True
-
-# If true, the current module name will be prepended to all description
-# unit titles (such as .. function::).
-# add_module_names = True
-
-# If true, sectionauthor and moduleauthor directives will be shown in the
-# output. They are ignored by default.
-# show_authors = False
-
-# The name of the Pygments (syntax highlighting) style to use.
+# Update the configuration settings to enable necessary options for linting
+# Uncomment or specify values for relevant configurations
 pygments_style = "sphinx"
 
 # A list of ignored prefixes for module index sorting.
@@ -152,21 +140,8 @@ html_theme = "sphinx_rtd_theme"
 # html_domain_indices = True
 
 # If false, no index is generated.
-# html_use_index = True
-
-# If true, the index is split into individual pages for each letter.
-# html_split_index = False
-
-# If true, links to the reST sources are added to the pages.
-# html_show_sourcelink = True
-
-# If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
-# html_show_sphinx = True
-
-# If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
-# html_show_copyright = True
-
-# If true, an OpenSearch description file will be output, and all pages will
+# Update the configuration settings for HTML documentation generation
+# Uncomment or modify settings as needed for successful linting
 # contain a <link> tag referring to it.  The value of this option must be the
 # base URL from which the finished HTML is served.
 # html_use_opensearch = ''

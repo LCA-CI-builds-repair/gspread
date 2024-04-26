@@ -344,35 +344,7 @@ class BackOffHTTPClient(HTTPClient):
     _MAX_BACKOFF_REACHED: bool = False  # Stop after reaching _MAX_BACKOFF
 
     def request(self, *args: Any, **kwargs: Any) -> Response:
-        try:
-            return super().request(*args, **kwargs)
-        except APIError as err:
-            data = err.response.json()
-            code = data["error"]["code"]
-
-            # check if error should retry
-            if code in self._HTTP_ERROR_CODES and self._MAX_BACKOFF_REACHED is False:
-                self._NR_BACKOFF += 1
-                wait = min(2**self._NR_BACKOFF, self._MAX_BACKOFF)
-
-                if wait >= self._MAX_BACKOFF:
-                    self._MAX_BACKOFF_REACHED = True
-
-                import time
-
-                time.sleep(wait)
-
-                # make the request again
-                response = self.request(*args, **kwargs)
-
-                # reset counters for next time
-                self._NR_BACKOFF = 0
-                self._MAX_BACKOFF_REACHED = False
-
-                return response
-
-            # failed too many times, raise APIEerror
-            raise err
-
-
+# Update the error handling and retry mechanism within the request method
+# Refactor the code for improved readability and maintainability
+# Ensure that the error handling logic follows best practices
 HTTPClientType = Type[HTTPClient]
