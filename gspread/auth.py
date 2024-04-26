@@ -154,9 +154,7 @@ def oauth(
 
     :param list scopes: The scopes used to obtain authorization.
     :param function flow: OAuth flow to use for authentication.
-        Defaults to :meth:`~gspread.auth.local_server_flow`
-    :param str credentials_filename: Filepath (including name) pointing to a
-        credentials `.json` file.
+    :param str credentials_filename: Filepath (including name) pointing to a credentials `.json` file.
         Defaults to DEFAULT_CREDENTIALS_FILENAME:
 
             * `%APPDATA%\gspread\credentials.json` on Windows

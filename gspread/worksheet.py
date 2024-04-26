@@ -512,9 +512,8 @@ class Worksheet:
             0 for rows, 1 for columns.
         :param int first_index: (optional) row/col (depends on `use_index`) to start reading data from (inclusive) (1-based).
         :param int last_index: (optional) row/col (depends on `use_index`) to stop reading at (inclusive) (1-based).
-        :param str default_blank: (optional) Determines which value to use for
-            blank cells, defaults to empty string.
-        :param bool allow_underscores_in_numeric_literals: (optional) Allow
+        :param str default_blank: (optional) Determines which value to use for blank cells, defaults to empty string.
+        :param bool allow_underscores_in_numeric_literals: (optional) Allow underscores in numeric literals for readability.
             underscores in numeric literals, as introduced in PEP 515
         :param list numericise_ignore: (optional) List of ints of indices of
             the columns (starting at 1) to ignore numericising, special use
@@ -631,6 +630,7 @@ class Worksheet:
             values = fill_gaps(values, cols=keys_len, padding_value=default_blank)
 
         if numericise_ignore == ["all"]:
+        if numericise_ignore == ["all"]:
             pass
         else:
             values = [
@@ -645,8 +645,6 @@ class Worksheet:
             ]
 
         formatted_records = [dict(zip(keys, row)) for row in values]
-
-        return formatted_records
 
     def get_all_cells(self) -> List[Cell]:
         """Returns a list of all `Cell` of the current sheet."""
