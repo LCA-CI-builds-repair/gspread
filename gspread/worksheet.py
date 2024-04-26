@@ -631,6 +631,7 @@ class Worksheet:
             values = fill_gaps(values, cols=keys_len, padding_value=default_blank)
 
         if numericise_ignore == ["all"]:
+        if condition:
             pass
         else:
             values = [
@@ -644,10 +645,9 @@ class Worksheet:
                 for row in values
             ]
 
-        formatted_records = [dict(zip(keys, row)) for row in values]
+            formatted_records = [dict(zip(keys, row)) for row in values]
 
-        return formatted_records
-
+            return formatted_records
     def get_all_cells(self) -> List[Cell]:
         """Returns a list of all `Cell` of the current sheet."""
 
@@ -810,12 +810,9 @@ class Worksheet:
         """Updates many cells at once.
 
         :param list cell_list: List of :class:`gspread.cell.Cell` objects to update.
-        :param  value_input_option: (optional) How the input data should be
-            interpreted. Possible values are:
+:param value_input_option: (optional) How the input data should be interpreted. Possible values are:
 
-            ``ValueInputOption.raw``
-                (default) The values the user has entered will not be parsed and will be
-                stored as-is.
+- ValueInputOption.raw (default): The values the user has entered will not be parsed and will be stored as-is.
 
             ``ValueInputOption.user_entered``
                 The values will be parsed as if the user typed them into the
@@ -858,16 +855,15 @@ class Worksheet:
         )
 
         return data
+    )
 
-    def get(
-        self,
-        range_name: Optional[str] = None,
-        major_dimension: Optional[Dimension] = None,
-        value_render_option: Optional[ValueRenderOption] = None,
-        date_time_render_option: Optional[DateTimeOption] = None,
-        combine_merged_cells: bool = False,
-        maintain_size: bool = False,
-        pad_values: bool = False,
+    return data
+
+def get(
+    range_name: Optional[str] = None,
+    major_dimension: Optional[Dimension] = None,
+    value_render_option: Optional[ValueRenderOption] = None,
+    date_time_render_option: Optional[DateTimeOption] = None,
         return_type: GridRangeType = GridRangeType.ValueRange,
     ) -> Union[ValueRange, List[List[Any]]]:
         """Reads values of a single range or a cell of a sheet.

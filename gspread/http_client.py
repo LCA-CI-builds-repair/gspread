@@ -54,11 +54,9 @@ class HTTPClient:
     :param Session session: (Optional) An OAuth2 credential object. Credential objects
         created by `google-auth <https://github.com/googleapis/google-auth-library-python>`_.
 
-        You can pass you own Session object, simply pass ``auth=None`` and ``session=my_custom_session``.
+        You can pass your own Session object, simply pass ``auth=None`` and ``session=my_custom_session``.
 
-    This class is not intended to be created manually.
-    It will be created by the gspread.Client class.
-    """
+    This class is not intended to be created manually. It will be created by the gspread.Client class.
 
     def __init__(self, auth: Credentials, session: Optional[Session] = None) -> None:
         if session is not None:
@@ -295,6 +293,7 @@ class HTTPClient:
         """
 
         url = DRIVE_FILES_API_V3_URL + "/{}".format(id)
+        url = DRIVE_FILES_API_V3_URL + "/{}".format(id)
 
         params: ParamsType = {
             "supportsAllDrives": True,
@@ -305,12 +304,6 @@ class HTTPClient:
         res = self.request("get", url, params=params)
 
         return res.json()
-
-
-class BackOffHTTPClient(HTTPClient):
-    """BackoffClient is a gspread client with exponential
-    backoff retries.
-
     In case a request fails due to some API rate limits,
     it will wait for some time, then retry the request.
 
@@ -327,12 +320,10 @@ class BackOffHTTPClient(HTTPClient):
         method used.
 
     .. note::
-        Currently known issues are:
-
-        * will retry exponentially even when the error should
-          raise instantly. Due to the Drive API that raises
-          403 (Forbidden) errors for forbidden access and
-          for api rate limit exceeded."""
+            .. note::
+                To use with the `auth` module, make sure to pass this backoff
+                client factory using the ``client_factory`` parameter of the
+                method used.
 
     _HTTP_ERROR_CODES: List[HTTPStatus] = [
         HTTPStatus.FORBIDDEN,  # Drive API return a 403 Forbidden on usage rate limit exceeded

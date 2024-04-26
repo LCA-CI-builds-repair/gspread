@@ -60,7 +60,7 @@ class CellTest(GspreadTest):
         self.assertEqual(cell.numeric_value, numeric_value)
         self.assertIsInstance(cell.numeric_value, float)
 
-        # test non numeric value
+        # Test non-numeric value
         self.sheet.update_acell("A1", "Non-numeric value")
         cell = self.sheet.acell("A1")
         self.assertEqual(cell.numeric_value, None)
@@ -138,11 +138,10 @@ class CellTest(GspreadTest):
         ]
 
         self.sheet.delete_named_range(named_range_id)
-
-        # get the ranges from the metadata
+        # Get the ranges from the metadata
         named_range_dict = self.spreadsheet.fetch_sheet_metadata(
             params={"fields": "namedRanges"}
         )
 
-        # make sure that no ranges were returned
+        # Ensure that no ranges were returned
         self.assertEqual(named_range_dict, {})

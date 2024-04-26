@@ -24,17 +24,6 @@ from .utils import ExportFormat, MimeType, extract_id_from_url, finditem
 
 
 class Client:
-    """An instance of this class Manages Spreadsheet files
-
-    It is used to:
-        - open/create/list/delete spreadsheets
-        - create/delete/list spreadsheet permission
-        - etc
-
-    It is the gspread entry point.
-    It will handle creating necessary :class:`~gspread.models.Spreadsheet` instances.
-    """
-
     def __init__(
         self, auth: Credentials, http_client: HTTPClientType = HTTPClient
     ) -> None:

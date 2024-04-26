@@ -12,6 +12,8 @@ from gspread.client import Client
 from gspread.http_client import BackOffHTTPClient
 
 CREDS_FILENAME = os.getenv("GS_CREDS_FILENAME")
+import os
+
 RECORD_MODE = os.getenv("GS_RECORD_MODE", "none")
 
 SCOPE = [
@@ -21,7 +23,6 @@ SCOPE = [
 DUMMY_ACCESS_TOKEN = "<ACCESS_TOKEN>"
 
 I18N_STR = "Iñtërnâtiônàlizætiøn"  # .encode('utf8')
-
 
 def read_credentials(filename):
     return ServiceAccountCredentials.from_service_account_file(filename, scopes=SCOPE)
@@ -64,8 +65,7 @@ def vcr_config():
 
 
 class DummyCredentials(UserCredentials):
-    pass
-
+import unittest
 
 class GspreadTest(unittest.TestCase):
     @classmethod
@@ -79,7 +79,6 @@ class GspreadTest(unittest.TestCase):
     def _sequence_generator(self):
         return prefixed_counter(get_method_name(self.id()))
 
-
 @pytest.fixture(scope="module")
 def client():
     if CREDS_FILENAME:
@@ -88,7 +87,8 @@ def client():
         auth_credentials = DummyCredentials(DUMMY_ACCESS_TOKEN)
 
     gc = Client(auth_credentials, BackOffHTTPClient)
-    if not isinstance(gc, gspread.client.Client) is True:
+    if not isinstance(gc, gspread.client.Client):
         raise AssertionError
 
+    return gc
     return gc
