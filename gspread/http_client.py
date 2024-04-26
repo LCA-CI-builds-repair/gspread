@@ -54,7 +54,7 @@ class HTTPClient:
     :param Session session: (Optional) An OAuth2 credential object. Credential objects
         created by `google-auth <https://github.com/googleapis/google-auth-library-python>`_.
 
-        You can pass you own Session object, simply pass ``auth=None`` and ``session=my_custom_session``.
+        You can pass your own Session object, simply pass ``auth=None`` and ``session=my_custom_session``.
 
     This class is not intended to be created manually.
     It will be created by the gspread.Client class.
