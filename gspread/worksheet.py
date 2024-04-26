@@ -517,8 +517,8 @@ class Worksheet:
         :param bool allow_underscores_in_numeric_literals: (optional) Allow
             underscores in numeric literals, as introduced in PEP 515
         :param list numericise_ignore: (optional) List of ints of indices of
-            the columns (starting at 1) to ignore numericising, special use
-            of ['all'] to ignore numericising on all columns.
+            the columns (starting at 1) to ignore numericizing, special use
+            of ['all'] to ignore numericizing on all columns.
         :param value_render_option: (optional) Determines how values should
             be rendered in the output. See `ValueRenderOption`_ in
             the Sheets API.
@@ -1228,8 +1228,8 @@ class Worksheet:
         if isinstance(range_name, (list, tuple)) and isinstance(values, str):
             warnings.warn(
                 "The order of arguments in worksheet.update() has changed. "
-                "Please pass values first and range_name second"
-                "or used named arguments (range_name=, values=)",
+                "Please pass values first and range_name second "
+                "or use named arguments (range_name=, values=)",
                 DeprecationWarning,
             )
             range_name, values = values, range_name
@@ -1580,14 +1580,13 @@ class Worksheet:
                 request_order = "DESCENDING"
             else:
                 raise ValueError(
-                    "Either 'asc' or 'des' should be specified as sort order."
+                    "Either 'asc' or 'des' should be specified as the sort order."
                 )
             request_sort_spec = {
                 "dimensionIndex": col - 1,
                 "sortOrder": request_order,
             }
             request_sort_specs.append(request_sort_spec)
-
         body = {
             "requests": [
                 {
@@ -1676,6 +1675,7 @@ class Worksheet:
         return response
 
     def update_index(self, index: int) -> JSONResponse:
+    def update_index(self, index: int) -> JSONResponse:
         """Updates the ``index`` property for the worksheet.
 
         See the `Sheets API documentation
@@ -1684,8 +1684,6 @@ class Worksheet:
         in a spreadsheet.
 
         To reorder all worksheets in a spreadsheet, see `Spreadsheet.reorder_worksheets`.
-
-        .. versionadded:: 3.4
         """
         body = {
             "requests": [
@@ -2474,13 +2472,11 @@ class Worksheet:
             If empty, a new name is chosen for you.
 
         :returns: a newly created :class:`gspread.worksheet.Worksheet`.
+        :returns: a newly created :class:`gspread.worksheet.Worksheet`.
 
         .. note::
            This is a class method in order for the spreadsheet class
            to use it without an instance of a Worksheet object
-        """
-
-        body = {
             "requests": [
                 {
                     "duplicateSheet": {
@@ -2857,17 +2853,12 @@ class Worksheet:
             range can be found here: `Add Dimension Group Request`_
 
             .. _Add Dimension Group Request: https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets/request#AddDimensionGroupRequest
-
         :param int start: The start (inclusive) of the group
         :param int end: The end (exclusive) of the group
         """
         return self._add_dimension_group(start, end, Dimension.cols)
 
     def add_dimension_group_rows(self, start: int, end: int) -> JSONResponse:
-        """
-        Group rows in order to hide them in the UI.
-
-        .. note::
 
             API behavior with nested groups and non-matching ``[start:end)``
             range can be found here `Add Dimension Group Request`_
@@ -3135,13 +3126,13 @@ class Worksheet:
            .. _Paste Types: https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets/request#pastetype
 
         :param str source: The A1 notation of the source range to copy
-        :param str dest: The A1 notation of the destination where to paste the data
-            Can be the A1 notation of the top left corner where the range must be paste
-            ex: G16, or a complete range notation ex: G16:I20.
-            The dimensions of the destination range is not checked and has no effect,
-            if the destination range does not match the source range dimension, the entire
-            source range is copies anyway.
-        :param paste_type: the paste type to apply. Many paste type are available from
+        """Copies a range of data from source to dest
+
+        .. note::
+
+           ``paste_type`` values are explained here: `Paste Types`_
+
+           .. _Paste Types: https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets/request#pastetype
             the Sheet API, see above note for detailed values for all values and their effects.
             Defaults to ``PasteType.normal``
         :type paste_type: :class:`~gspread.utils.PasteType`
@@ -3179,13 +3170,13 @@ class Worksheet:
            .. _Paste Types: https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets/request#pastetype
 
         :param str source: The A1 notation of the source range to move
-        :param str dest: The A1 notation of the destination where to paste the data
-            **it must be a single cell** in the A1 notation. ex: G16
-        :param paste_type: the paste type to apply. Many paste type are available from
-            the Sheet API, see above note for detailed values for all values and their effects.
-            Defaults to ``PasteType.normal``
-        :type paste_type: :class:`~gspread.utils.PasteType`
-        """
+        """Moves a range of data from source to dest
+
+        .. note::
+
+           ``paste_type`` values are explained here: `Paste Types`_
+
+           .. _Paste Types: https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets/request#pastetype
 
         # in the cut/paste request, the destination object
         # is a `gridCoordinate` and not a `gridRang`

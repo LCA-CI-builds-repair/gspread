@@ -410,12 +410,13 @@ class Spreadsheet:
         body = {"requests": [{"deleteSheet": {"sheetId": worksheet_id_int}}]}
 
         return self.client.batch_update(self.id, body)
+# Add necessary import statements if missing
 
     def reorder_worksheets(self, worksheets_in_desired_order):
         """Updates the ``index`` property of each Worksheet to reflect
         its index in the provided sequence of Worksheets.
 
-        :param worksheets_in_desired_order: Iterable of Worksheet objects in desired order.
+        :param worksheets_in_desired_order: Iterable of Worksheet objects in the desired order.
 
         Note: If you omit some of the Spreadsheet's existing Worksheet objects from
         the provided sequence, those Worksheets will be appended to the end of the sequence

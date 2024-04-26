@@ -1182,6 +1182,9 @@ class WorksheetTest(GspreadTest):
         self.assertEqual(shifted_value_list, read_values)
 
     @pytest.mark.vcr()
+import pytest
+
+class TestWorksheet:
     def test_append_row_with_empty_value_and_table_range(self):
         sg = self._sequence_generator()
         value_list = [next(sg) for i in range(3)]
@@ -1192,9 +1195,9 @@ class WorksheetTest(GspreadTest):
         # This should produce no shift in rows
         # contrary to test_append_row_with_empty_value
         read_values = self.sheet.row_values(2)
-        self.assertEqual(value_list, read_values)
+        assert value_list == read_values
 
-    @pytest.mark.vcr()
+    @pytest.mark.vcr
     def test_insert_row(self):
         sg = self._sequence_generator()
 

@@ -339,7 +339,7 @@ def a1_to_rowcol(label: str) -> Tuple[int, int]:
         raise IncorrectCellLabel(label)
 
     return (row, col)
-
+# Add necessary import statements if missing
 
 IntOrInf = Union[int, float]
 
@@ -350,6 +350,7 @@ def _a1_to_rowcol_unbounded(label: str) -> Tuple[IntOrInf, IntOrInf]:
     Same as `a1_to_rowcol()` but allows for missing row or column part
     (e.g. "A" for the first column)
 
+    :param str label: The cell's address in A1 notation.
     :returns: a tuple containing `row` and `column` numbers. Both indexed
         from 1 (one).
     :rtype: tuple

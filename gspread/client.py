@@ -269,23 +269,24 @@ class Client:
             the original spreadsheet to the new spreadsheet.
 
         :returns: a :class:`~gspread.models.Spreadsheet` instance.
+# Add necessary import statements if missing
 
-        .. versionadded:: 3.1.0
+.. versionadded:: 3.1.0
 
-        .. note::
+.. note::
 
-           If you're using custom credentials without the Drive scope, you need to add
-           ``https://www.googleapis.com/auth/drive`` to your OAuth scope in order to use
-           this method.
+    If you're using custom credentials without the Drive scope, you need to add
+    ``https://www.googleapis.com/auth/drive`` to your OAuth scope in order to use
+    this method.
 
-           Example::
+    Example::
 
-              scope = [
-                  'https://www.googleapis.com/auth/spreadsheets',
-                  'https://www.googleapis.com/auth/drive'
-              ]
+        scope = [
+            'https://www.googleapis.com/auth/spreadsheets',
+            'https://www.googleapis.com/auth/drive'
+        ]
 
-           Otherwise, you will get an ``Insufficient Permission`` error
+    Otherwise, you will get an ``Insufficient Permission`` error
            when you try to copy a spreadsheet.
 
         """
@@ -338,7 +339,9 @@ class Client:
                 page_token = res.get("nextPageToken", None)
 
             destination_url = DRIVE_FILES_API_V3_COMMENTS_URL % (new_spreadsheet.id)
-            # requesting some fields in the response is mandatory from the API.
+# Add necessary import statements if missing
+
+# Existing code snippet with potential corrections
             # choose 'id' randomly out of all the fields, but no need to use it for now.
             params = {"fields": "id"}
             for comment in comments:
@@ -349,6 +352,7 @@ class Client:
         return new_spreadsheet
 
     def del_spreadsheet(self, file_id: str) -> None:
+        """Deletes a spreadsheet.
         """Deletes a spreadsheet.
 
         :param str file_id: a spreadsheet ID (a.k.a file ID).
