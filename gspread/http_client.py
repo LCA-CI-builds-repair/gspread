@@ -252,6 +252,18 @@ class HTTPClient:
         r = self.request("post", url, json=body)
         return r.json()
 
+import requests
+from typing import Optional, Any
+
+SPREADSHEET_URL: str = "https://sheets.googleapis.com/v4/spreadsheets/%s"
+
+class HTTPClient:
+    def __init__(self):
+        pass
+
+    def request(self, method: str, url: str, params: Optional[ParamsType] = None) -> Any:
+        return requests.request(method, url, params=params)
+
     def spreadsheets_get(self, id: str, params: Optional[ParamsType] = None) -> Any:
         """A method stub that directly calls `spreadsheets.get <https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets/get>`_."""
         url = SPREADSHEET_URL % id

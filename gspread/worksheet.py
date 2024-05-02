@@ -810,7 +810,7 @@ class Worksheet:
         """Updates many cells at once.
 
         :param list cell_list: List of :class:`gspread.cell.Cell` objects to update.
-        :param  value_input_option: (optional) How the input data should be
+        :param str value_input_option: (optional) How the input data should be
             interpreted. Possible values are:
 
             ``ValueInputOption.raw``
@@ -3141,11 +3141,11 @@ class Worksheet:
             The dimensions of the destination range is not checked and has no effect,
             if the destination range does not match the source range dimension, the entire
             source range is copies anyway.
-        :param paste_type: the paste type to apply. Many paste type are available from
+        :param PasteType paste_type: the paste type to apply. Many paste type are available from
             the Sheet API, see above note for detailed values for all values and their effects.
             Defaults to ``PasteType.normal``
         :type paste_type: :class:`~gspread.utils.PasteType`
-        :param paste_orientation: The paste orient to apply.
+        :param PasteOrientation paste_orientation: The paste orient to apply.
             Possible values are: ``normal`` to keep the same orientation, ``transpose`` where all rows become columns and vice versa.
         :type paste_orientation: :class:`~gspread.utils.PasteOrientation`
         """
