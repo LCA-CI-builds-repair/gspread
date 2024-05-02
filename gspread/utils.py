@@ -900,6 +900,6 @@ def get_a1_from_absolute_range(range_name: str) -> str:
 
 
 if __name__ == "__main__":
-    import doctest
+import doctest
 
-    doctest.testmod()
+doctest.testmod()

@@ -241,7 +241,6 @@ def oauth_from_dict(
                 credentials=my_creds,
                 authorized_user_info=my_auth_user
         )
-
     :param dict credentials: The credentials from google cloud platform
     :param dict authorized_user_info: The authenticated user
         if already authenticated.
