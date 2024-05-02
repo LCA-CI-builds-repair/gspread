@@ -305,7 +305,9 @@ class HTTPClient:
         res = self.request("get", url, params=params)
 
         return res.json()
-
+import time
+from typing import Any, List, Type
+from http import HTTPStatus
 
 class BackOffHTTPClient(HTTPClient):
     """BackoffClient is a gspread client with exponential
@@ -358,8 +360,6 @@ class BackOffHTTPClient(HTTPClient):
                 if wait >= self._MAX_BACKOFF:
                     self._MAX_BACKOFF_REACHED = True
 
-                import time
-
                 time.sleep(wait)
 
                 # make the request again
@@ -371,7 +371,7 @@ class BackOffHTTPClient(HTTPClient):
 
                 return response
 
-            # failed too many times, raise APIEerror
+            # failed too many times, raise APIError
             raise err
 
 

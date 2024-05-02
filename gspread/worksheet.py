@@ -641,11 +641,10 @@ class Worksheet:
                     allow_underscores_in_numeric_literals,
                     numericise_ignore,
                 )
-                for row in values
+                for row in values if isinstance(values, list)
             ]
 
         formatted_records = [dict(zip(keys, row)) for row in values]
-
         return formatted_records
 
     def get_all_cells(self) -> List[Cell]:
