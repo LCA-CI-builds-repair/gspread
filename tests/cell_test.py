@@ -60,9 +60,10 @@ class CellTest(GspreadTest):
         self.assertEqual(cell.numeric_value, numeric_value)
         self.assertIsInstance(cell.numeric_value, float)
 
-        # test non numeric value
+        # test non-numeric value
         self.sheet.update_acell("A1", "Non-numeric value")
         cell = self.sheet.acell("A1")
+        self.assertEqual(cell.value, "Non-numeric value")
         self.assertEqual(cell.numeric_value, None)
 
     @pytest.mark.vcr()
@@ -80,7 +81,6 @@ class CellTest(GspreadTest):
         self.assertEqual(cell.value, "Foo Bar")
         self.assertEqual((cell.row, cell.col), (1, 1))
 
-    @pytest.mark.vcr()
     def test_merge_cells(self):
         self.sheet.update([[42, 43], [43, 44]], "A1:B2")
 
@@ -93,6 +93,12 @@ class CellTest(GspreadTest):
         self.sheet.merge_cells(1, 1, 2, 2)
 
         merges = self.sheet._get_sheet_property("merges", [])
+        self.assertEqual(len(merges), 1)
+
+        # test merge all without specifying merge type
+        self.sheet.merge_cells(1, 1, 2, 2)
+        merges = self.sheet._get_sheet_property("merges", [])
+        self.assertEqual(len(merges), 1)
         self.assertEqual(len(merges), 1)
 
         self.sheet.unmerge_cells(1, 1, 2, 2)
