@@ -315,13 +315,13 @@ class Worksheet:
 
             value = str(data.first())
         except KeyError:
-            value = ""
+        value = ""
 
-        return Cell(row, col, value)
+    return Cell(row, col, value)
 
-    @cast_to_a1_notation
-    def range(self, name: str = "") -> List[Cell]:
-        """Returns a list of :class:`gspread.cell.Cell` objects from a specified range.
+@cast_to_a1_notation
+def range(self, name: str = "") -> List[Cell]:
+    """Returns a list of :class:`gspread.cell.Cell` objects from a specified range."""
 
         :param name: A string with range value in A1 notation (e.g. 'A1:A5')
                      or the named range to fetch.
