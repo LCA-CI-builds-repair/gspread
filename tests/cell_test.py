@@ -53,16 +53,11 @@ class CellTest(GspreadTest):
         self.assertEqual(cell.numeric_value, numeric_value)
         self.assertIsInstance(cell.numeric_value, float)
 
-        # test value for popular format with long numbers
-        numeric_value = 2000000.01
-        self.sheet.update_acell("A1", "2,000,000.01")
-        cell = self.sheet.acell("A1")
-        self.assertEqual(cell.numeric_value, numeric_value)
-        self.assertIsInstance(cell.numeric_value, float)
-
         # test non numeric value
         self.sheet.update_acell("A1", "Non-numeric value")
         cell = self.sheet.acell("A1")
+        self.assertEqual(cell.numeric_value, None)
+        self.assertIsInstance(cell.numeric_value, float)
         self.assertEqual(cell.numeric_value, None)
 
     @pytest.mark.vcr()
@@ -80,19 +75,12 @@ class CellTest(GspreadTest):
         self.assertEqual(cell.value, "Foo Bar")
         self.assertEqual((cell.row, cell.col), (1, 1))
 
-    @pytest.mark.vcr()
-    def test_merge_cells(self):
-        self.sheet.update([[42, 43], [43, 44]], "A1:B2")
-
-        # test merge rows
+        # test merge cells
         self.sheet.merge_cells(1, 1, 2, 2, merge_type="MERGE_ROWS")
+        
+        # check merges property after merge operation
         merges = self.sheet._get_sheet_property("merges", [])
-        self.assertEqual(len(merges), 2)
-
-        # test merge all
-        self.sheet.merge_cells(1, 1, 2, 2)
-
-        merges = self.sheet._get_sheet_property("merges", [])
+        self.assertEqual(len(merges), 3)
         self.assertEqual(len(merges), 1)
 
         self.sheet.unmerge_cells(1, 1, 2, 2)

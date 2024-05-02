@@ -426,7 +426,9 @@
                         "148"
                     ],
                     "Content-Type": [
-                        "application/json"
+                    ],
+                    "Content-Type": [
+                        "application/json",
                     ],
                     "authorization": [
                         "<ACCESS_TOKEN>"
@@ -477,13 +479,16 @@
                 },
                 "body": {
                     "string": "{\n  \"spreadsheetId\": \"1zZd5BsyheqLZLClTJlh-wr8ZXYMlg-TZquuJXw3hE7Q\",\n  \"replies\": [\n    {}\n  ]\n}\n"
-                }
-            }
         },
         {
             "request": {
                 "method": "GET",
                 "uri": "https://sheets.googleapis.com/v4/spreadsheets/1zZd5BsyheqLZLClTJlh-wr8ZXYMlg-TZquuJXw3hE7Q?includeGridData=false",
+                "body": null,
+                "headers": {
+                }
+            }
+        }
                 "body": null,
                 "headers": {
                     "User-Agent": [
@@ -1725,43 +1730,8 @@
                 "status": {
                     "code": 204,
                     "message": "No Content"
-                },
-                "headers": {
-                    "X-XSS-Protection": [
-                        "0"
-                    ],
-                    "X-Frame-Options": [
-                        "SAMEORIGIN"
-                    ],
-                    "X-Content-Type-Options": [
-                        "nosniff"
-                    ],
-                    "Content-Type": [
-                        "text/html"
-                    ],
-                    "Cache-Control": [
-                        "no-cache, no-store, max-age=0, must-revalidate"
-                    ],
-                    "Alt-Svc": [
-                        "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
-                    ],
-                    "Pragma": [
-                        "no-cache"
-                    ],
-                    "Date": [
-                        "Wed, 06 Sep 2023 21:21:25 GMT"
-                    ],
-                    "Expires": [
-                        "Mon, 01 Jan 1990 00:00:00 GMT"
-                    ],
-                    "Content-Length": [
-                        "0"
-                    ],
-                    "Server": [
-                        "ESF"
-                    ],
                     "Vary": [
-                        "Origin, X-Origin"
+                        "Origin", "X-Origin"
                     ]
                 },
                 "body": {
