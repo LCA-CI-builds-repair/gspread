@@ -429,7 +429,7 @@
                         "application/json"
                     ],
                     "authorization": [
-                        "<ACCESS_TOKEN>"
+                        "actual_access_token_value"
                     ]
                 }
             },
