@@ -762,8 +762,14 @@ def convert_hex_to_colors_dict(hex_color: str) -> Mapping[str, float]:
 
     :param str hex_color: Hex color code in the format "#RRGGBB".
 
-    :returns: Dict containing the color's red, green and blue values between 0 and 1.
-    :rtype: dict
+def convert_hex_to_colors_dict(hex_color: str) -> Dict[str, float]:
+    """Convert a hex color code to RGB color values.
+
+    :param hex_color: Hex color code in the format "#RRGGBB".
+    :type hex_color: str
+
+    :returns: Dict containing the color's red, green, and blue values between 0 and 1.
+    :rtype: Dict[str, float]
 
     :raises:
         ValueError: If the input hex string is not in the correct format or length.
@@ -783,7 +789,6 @@ def convert_hex_to_colors_dict(hex_color: str) -> Mapping[str, float]:
     # https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets/other#colorstyle
     if len(hex_color) == 8:
         hex_color = hex_color[:-2]
-
     # Expand 3 character hex.
     if len(hex_color) == 3:
         hex_color = "".join([char * 2 for char in hex_color])
@@ -811,11 +816,6 @@ def convert_colors_to_hex_value(
     :param float red: Red color value (0-1).
     :param float green: Green color value (0-1).
     :param float blue: Blue color value (0-1).
-
-    :returns: Hex color code in the format "#RRGGBB".
-    :rtype: str
-
-    :raises:
         ValueError: If any color value is out of the accepted range (0-1).
 
     Example:
@@ -844,13 +844,12 @@ def is_full_a1_notation(range_name: str) -> bool:
     """Check if the range name is a full A1 notation.
     "A1:B2", "Sheet1!A1:B2" are full A1 notations
     "A1:B", "A1" are not
+    """
+    """Check if the range name is a full A1 notation.
+    "A1:B2", "Sheet1!A1:B2" are full A1 notations
+    "A1:B", "A1" are not
 
     Args:
-        range_name (str): The range name to check.
-
-    Returns:
-        bool: True if the range name is a full A1 notation, False otherwise.
-
     Examples:
 
         >>> is_full_a1_notation("A1:B2")
@@ -879,13 +878,17 @@ def get_a1_from_absolute_range(range_name: str) -> str:
 
 
 # SHOULD NOT BE NEEDED UNTIL NEXT MAJOR VERSION
-# def deprecation_warning(version: str, msg: str) -> None:
+    return range_name
+
 #     """Emit a deprecation warning.
 
 #     ..note::
 
 #         This warning can be silenced by setting the environment variable:
 #         GSPREAD_SILENCE_WARNINGS=1
+#     """
+
+#     # do not emit warning if env variable is set specifically to 1
 #     """
 
 #     # do not emit warning if env variable is set specifically to 1

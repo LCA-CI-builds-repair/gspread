@@ -431,7 +431,6 @@ class Spreadsheet:
                 continue
             idx += 1
             idx_map[w.id] = idx
-
         body = {
             "requests": [
                 {

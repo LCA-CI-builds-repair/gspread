@@ -351,9 +351,11 @@ class BackOffHTTPClient(HTTPClient):
             code = data["error"]["code"]
 
             # check if error should retry
-            if code in self._HTTP_ERROR_CODES and self._MAX_BACKOFF_REACHED is False:
+            if code in self._HTTP_ERROR_CODES and not self._MAX_BACKOFF_REACHED:
                 self._NR_BACKOFF += 1
                 wait = min(2**self._NR_BACKOFF, self._MAX_BACKOFF)
+                
+                # Add logic here to handle retry mechanism with wait time
 
                 if wait >= self._MAX_BACKOFF:
                     self._MAX_BACKOFF_REACHED = True

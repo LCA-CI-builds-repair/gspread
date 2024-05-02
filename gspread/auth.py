@@ -225,15 +225,12 @@ def oauth_from_dict(
         gc = gspread.oauth_from_dict(scopes=gspread.auth.READONLY_SCOPES)
 
         sh = gc.open("A spreadsheet")
-        sh.sheet1.update('A1', '42')   # <-- this will not work
+        sh.sheet1.update('A1', '42')   # <-- Replace this with the correct method to update a cell
 
     This function requires you to pass the credentials directly as
     a python dict. After the first authentication the function returns
     the authenticated user info, this can be passed again to authenticate
     the user without the need to run the flow again.
-
-    ..
-        code block below must be explicitly announced using code-block
 
     .. code-block:: python
 

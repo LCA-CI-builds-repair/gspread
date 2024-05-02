@@ -2417,6 +2417,7 @@ class Worksheet:
            to use it without an instance of a Worksheet object
         """
 
+        # Add the method or function definition to complete the class method implementation
         body = {
             "requests": [
                 {
