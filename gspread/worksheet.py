@@ -24,7 +24,7 @@ from typing import (
     Type,
     TypedDict,
     TypeVar,
-    Union,
+    Union, overload,
 )
 
 from .cell import Cell
@@ -286,7 +286,7 @@ class Worksheet:
         row: int,
         col: int,
         value_render_option: ValueRenderOption = ValueRenderOption.formatted,
-    ) -> Cell:
+    ) -> Optional[Cell]:
         """Returns an instance of a :class:`gspread.cell.Cell` located at
         `row` and `col` column.
 
