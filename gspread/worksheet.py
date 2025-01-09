@@ -314,6 +314,12 @@ class Worksheet:
             )
 
             value = str(data.first())
+            if isinstance(data, ValueRange):
+                value = str(data.first())
+            elif isinstance(data, list) and len(data) > 0 and len(data[0]) > 0:
+                value = str(data[0][0])
+            else:
+                value = ""
         except KeyError:
             value = ""
 
