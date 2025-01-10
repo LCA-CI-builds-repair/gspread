@@ -139,7 +139,7 @@ class ValueRange(list):
 
     def first(self, default: Optional[str] = None) -> Optional[str]:
         """Returns the value of a first cell in a range.
-
+        
         If the range is empty, return the default value.
         """
         try:
