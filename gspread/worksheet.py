@@ -138,7 +138,7 @@ class ValueRange(list):
         return self._json["majorDimension"]
 
     def first(self, default: Optional[str] = None) -> Optional[str]:
-        """Returns the value of a first cell in a range.
+        """Returns the value of the first cell in a range.
 
         If the range is empty, return the default value.
         """
@@ -311,7 +311,7 @@ class Worksheet:
         try:
             data = self.get(
                 rowcol_to_a1(row, col), value_render_option=value_render_option
-            )
+            )  # type: ValueRange
 
             value = str(data.first())
         except KeyError:
