@@ -313,7 +313,12 @@ class Worksheet:
                 rowcol_to_a1(row, col), value_render_option=value_render_option
             )
 
-            value = str(data.first())
+            if isinstance(data, ValueRange):
+                value = str(data.first())
+            elif isinstance(data, list) and len(data) > 0 and isinstance(data[0], list):
+                value = str(data[0][0]) if len(data[0]) > 0 else ""
+            else:
+                value = ""
         except KeyError:
             value = ""
 
