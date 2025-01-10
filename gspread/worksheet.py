@@ -280,7 +280,7 @@ class Worksheet:
         return self.cell(
             *(a1_to_rowcol(label)), value_render_option=value_render_option
         )
-
+    
     def cell(
         self,
         row: int,
@@ -311,7 +311,8 @@ class Worksheet:
         try:
             data = self.get(
                 rowcol_to_a1(row, col), value_render_option=value_render_option
-            )
+            )    
+            assert isinstance(data, ValueRange) # type: ignore[unreachable]
 
             value = str(data.first())
         except KeyError:
