@@ -143,7 +143,10 @@ class ValueRange(list):
         If the range is empty, return the default value.
         """
         try:
-            return self[0][0]
+            if self.major_dimension == "ROWS":
+                return self[0][0]
+            else:
+                return self[0][0]
         except IndexError:
             return default
 
@@ -162,6 +165,11 @@ class Worksheet:
         self.spreadsheet_id = spreadsheet_id
         self.client = client
         self._properties = properties
+
+    def __getattr__(self, name):
+        if name == 'value_range':
+            return self.get_all_values()
+        return self.__getattribute__(name)
 
     def __repr__(self) -> str:
         return "<{} {} id:{}>".format(
