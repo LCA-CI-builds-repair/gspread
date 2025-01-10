@@ -142,6 +142,8 @@ class ValueRange(list):
 
         If the range is empty, return the default value.
         """
+        if not self:
+            return default
         try:
             return self[0][0]
         except IndexError:
