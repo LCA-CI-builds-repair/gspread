@@ -277,9 +277,10 @@ class Worksheet:
         >>> worksheet.acell('A1')
         <Cell R1C1 "I'm cell A1">
         """
-        return self.cell(
-            *(a1_to_rowcol(label)), value_render_option=value_render_option
-        )
+        row, col = a1_to_rowcol(label)
+        data = self.get(label, value_render_option=value_render_option)
+        value = data.first() if isinstance(data, ValueRange) else str(data[0][0]) if data else ""
+        return Cell(row, col, value)
 
     def cell(
         self,
