@@ -315,6 +315,8 @@ class Worksheet:
 
             value = str(data.first())
         except KeyError:
+            if isinstance(data, list):
+                raise
             value = ""
 
         return Cell(row, col, value)
