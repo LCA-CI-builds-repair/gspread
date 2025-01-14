@@ -315,7 +315,10 @@ class Worksheet:
 
             value = str(data.first())
         except KeyError:
-            value = ""
+            if isinstance(data, list):
+                value = data[0][0] if data else ""  
+            else:
+                value = ""
 
         return Cell(row, col, value)
 
