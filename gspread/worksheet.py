@@ -709,10 +709,26 @@ class Worksheet:
         return data
 
     def update_cells(
-        self,
         cell_list: List[Cell],
         value_input_option: ValueInputOption = ValueInputOption.raw,
     ) -> Mapping[str, Any]:
+        try:
+            values_rect = cell_list_to_rect(cell_list)
+            start = rowcol_to_a1(
+                min(c.row for c in cell_list), min(c.col for c in cell_list)
+            )
+            end = rowcol_to_a1(max(c.row for c in cell_list), max(c.col for c in cell_list))
+            range_name = absolute_range_name(self.title, "{}:{}".format(start, end))
+            data = self.client.values_update(
+                self.spreadsheet_id,
+                range_name,
+                params={"valueInputOption": value_input_option},
+                body={"values": values_rect},
+            )
+            return data
+        except Exception as e:
+            print(f"Error updating cells: {e}")
+            raise GSpreadException("Failed to update cells")
         """Updates many cells at once.
 
         :param list cell_list: List of :class:`gspread.cell.Cell` objects to update.
