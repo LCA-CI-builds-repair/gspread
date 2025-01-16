@@ -142,10 +142,13 @@ class ValueRange(list):
 
         If the range is empty, return the default value.
         """
-        try:
-            return self[0][0]
-        except IndexError:
-            return default
+        if isinstance(self, list) and self and isinstance(self[0], list):
+            try:
+                return self[0][0]
+            except IndexError:
+                return default
+        else:
+            raise AttributeError("The object does not support the 'first()' method or is incompatible.")
 
 
 class Worksheet:
