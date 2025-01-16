@@ -143,7 +143,12 @@ class ValueRange(list):
         If the range is empty, return the default value.
         """
         try:
-            return self[0][0]
+            if not self:
+                return default
+            first_row = self[0]
+            if not first_row:
+                return default
+            return str(first_row[0]) if first_row[0] is not None else default
         except IndexError:
             return default
 
