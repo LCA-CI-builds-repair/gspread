@@ -311,9 +311,15 @@ class Worksheet:
         try:
             data = self.get(
                 rowcol_to_a1(row, col), value_render_option=value_render_option
-            )
-
-            value = str(data.first())
+            ) 
+            
+            # Handle both ValueRange and list[list[Any]] types
+            if isinstance(data, ValueRange):
+                value = str(data.first())
+            else:
+                # For list[list[Any]] type, get first value
+                value = str(data[0][0]) if data and data[0] else ""
+                
         except KeyError:
             value = ""
 
