@@ -314,6 +314,74 @@ class Worksheet:
                 value_render_option=value_render_option,
                 return_type=GridRangeType.ValueRange,
             )
+            )
+            )
+            )
+            )
+            )
+                raise gspreadexception(
+                    "the given 'expected_headers' are not uniques"
+                )
+            )
+            )
+            )
+            )
+                raise gspreadexception(
+                    "the given 'expected_headers' contains unknown headers: "
+                    f"{set(expected_headers) - set(keys)}"
+                )
+            )
+            )
+            )
+            )
+            )
+            )
+            )
+                raise gspreadexception(
+                    "the given 'expected_headers' are not uniques"
+                )
+            )
+            )
+            )
+                raise gspreadexception(
+                    "the given 'expected_headers' contains unknown headers: "
+                    f"{set(expected_headers) - set(keys)}"
+                )
+            )
+            )
+            )
+            )
+            )
+            )
+                raise gspreadexception(
+                    "the given 'expected_headers' are not uniques"
+                )
+            )
+            )
+            )
+                raise gspreadexception(
+                    "the given 'expected_headers' contains unknown headers: "
+                    f"{set(expected_headers) - set(keys)}"
+                )
+            )
+            )
+            )
+            )
+            )
+            )
+                raise gspreadexception(
+                    "the given 'expected_headers' are not uniques"
+                )
+            )
+            )
+            )
+                raise gspreadexception(
+                    "the given 'expected_headers' contains unknown headers: "
+                    f"{set(expected_headers) - set(keys)}"
+                )
+            )
+            )
+            )
             try:
                 value = str(data[0][0])
             except IndexError:
