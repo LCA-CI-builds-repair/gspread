@@ -141,9 +141,16 @@ class ValueRange(list):
         """Returns the value of a first cell in a range.
 
         If the range is empty, return the default value.
+        
+        Works with both ValueRange objects and raw list responses.
         """
         try:
-            return self[0][0]
+            if isinstance(self, list):
+                # Handle raw list response
+                return self[0][0] if self and self[0] else default
+            else:
+                # Handle ValueRange object
+                return self.values[0][0] if self.values and self.values[0] else default
         except IndexError:
             return default
 
