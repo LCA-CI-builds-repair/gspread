@@ -140,10 +140,16 @@ class ValueRange(list):
     def first(self, default: Optional[str] = None) -> Optional[str]:
         """Returns the value of a first cell in a range.
 
-        If the range is empty, return the default value.
+        If the range is empty, return the default value. 
+        Works with both ValueRange and raw list responses.
         """
         try:
-            return self[0][0]
+            if isinstance(self, list):
+                # Handle raw list response
+                return self[0][0] if self and self[0] else default
+            else:
+                # Handle ValueRange response 
+                return self[0][0] if self else default
         except IndexError:
             return default
 
