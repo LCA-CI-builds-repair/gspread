@@ -142,10 +142,16 @@ class ValueRange(list):
 
         If the range is empty, return the default value.
         """
-        try:
-            return self[0][0]
-        except IndexError:
-            return default
+        if isinstance(self[0], list):
+            try:
+                return self[0][0]
+            except IndexError:
+                return default
+        else:
+            try:
+                return self[0]
+            except IndexError:
+                return default
 
 
 class Worksheet:
