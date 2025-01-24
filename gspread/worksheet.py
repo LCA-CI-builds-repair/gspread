@@ -313,7 +313,7 @@ class Worksheet:
                 rowcol_to_a1(row, col), value_render_option=value_render_option
             )
 
-            value = str(data.first())
+            value = str(data[0][0])
         except KeyError:
             value = ""
 
